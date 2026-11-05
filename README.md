@@ -23,7 +23,7 @@ Three test cases that show different testing techniques:
 |---|---|---|---|---|
 | ROMAN-33 | User cannot add 1000000 books to cart | Boundary values | Failed | [ROMAN-38](#roman-38-quantity-field-has-no-max-limit-1000000-books-can-be-added-to-cart) (Highest) |
 | ROMAN-24 | Checkout does not accept a numeric First name | Negative testing, form validation | Failed | [ROMAN-34](#roman-34-first-name-field-accepts-numeric-value-1) (Medium) |
-| ROMAN-32 | Free eBook (0.00 CAD) can be ordered | Edge case, price | Passed | — |
+
 
 ---
 
@@ -41,16 +41,7 @@ Feature: KidKiddos Books - cart and checkout
     Then error message "Enter a valid first name" should be displayed
     And user should stay on the payment page
 
-  @ROMAN-32
-  Scenario: Free eBook (0.00 CAD) can be ordered
-    Given user is on the home page
-    And eBook "I Love My Mom (English Armenian Bilingual Book)" in .pdf format costs "0.00 CAD"
-    When user adds the eBook to cart
-    And user proceeds to checkout
-    And user fills all mandatory fields with valid data
-    And user clicks "Complete order" button
-    Then order should be created with a confirmation number
-    And eBook should be available for download
+
 
   @ROMAN-33 @bug:ROMAN-38
   Scenario: User cannot add 1000000 books to cart
